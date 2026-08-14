@@ -54,8 +54,22 @@ export async function orchestrateSearch(query: string): Promise<SearchResponse> 
     }
   }
 
-  // If strict constraints excluded everything, loosen budget threshold slightly so user gets actionable guidance
-  const candidatesToScore = passedCandidates.length > 0 ? passedCandidates : SINGAPORE_PLANNING_AREAS.slice(0, 5);
+  // If strict constraints excluded everything, loosen non-regional constraints so user gets actionable guidance in their preferred region
+  let candidatesToScore = passedCandidates;
+  if (candidatesToScore.length === 0) {
+    const preferredRegions = parsedIntent.preferences?.preferredRegions || [];
+    const regionHardConstraint = parsedIntent.hardConstraints?.find((c) => c.field === 'region' || c.field === 'location');
+    const targetRegion = regionHardConstraint ? String(regionHardConstraint.value) : preferredRegions[0];
+
+    if (targetRegion) {
+      const regionAreas = SINGAPORE_PLANNING_AREAS.filter(
+        (a) => a.region.toLowerCase() === targetRegion.toLowerCase() || a.region.toLowerCase().includes(targetRegion.toLowerCase())
+      );
+      candidatesToScore = regionAreas.length > 0 ? regionAreas : SINGAPORE_PLANNING_AREAS.slice(0, 5);
+    } else {
+      candidatesToScore = SINGAPORE_PLANNING_AREAS.slice(0, 5);
+    }
+  }
 
   // 4. Score eligible areas deterministically
   const scoredList = candidatesToScore.map((area) =>

@@ -221,17 +221,95 @@ Rules:
     return `${neighbourhoodName} (Score: ${overallScore}/100) is a top match as it ${affordabilityText}, delivers ${transportText} with balanced commutes, and features ${highlightSummary}.`;
   }
 
+  private extractRegionFromPrompt(prompt: string): Array<'East' | 'West' | 'North' | 'North-East' | 'Central'> {
+    const p = prompt.toLowerCase();
+    const regions: Array<'East' | 'West' | 'North' | 'North-East' | 'Central'> = [];
+
+    // Specific town & region keyword mappings
+    const westKeywords = ['west', 'jurong', 'clementi', 'bukit batok', 'bukit panjang', 'choa chu kang', 'boon lay', 'pioneer', 'tuas', 'pasir panjang'];
+    const eastKeywords = ['east', 'tampines', 'bedok', 'pasir ris', 'marine parade', 'changi', 'simei', 'kallang', 'geylang'];
+    const northKeywords = ['north', 'woodlands', 'yishun', 'sembawang'];
+    const northEastKeywords = ['north-east', 'northeast', 'punggol', 'sengkang', 'hougang', 'serangoon', 'ang mo kio', 'seletar', 'buangkok'];
+    const centralKeywords = ['central', 'bishan', 'bukit timah', 'toa payoh', 'queenstown', 'novena', 'newton', 'orchard', 'tanglin', 'downtown'];
+
+    // Check North-East first before North or East
+    if (northEastKeywords.some((kw) => p.includes(kw))) {
+      regions.push('North-East');
+    }
+    if (westKeywords.some((kw) => {
+      // Avoid matching 'west' inside words unless word boundary or standalone
+      const regex = new RegExp(`\\b${kw}\\b`, 'i');
+      return regex.test(p);
+    })) {
+      if (!regions.includes('West')) regions.push('West');
+    }
+    if (eastKeywords.some((kw) => {
+      const regex = new RegExp(`\\b${kw}\\b`, 'i');
+      return regex.test(p) && !p.includes('north-east') && !p.includes('northeast');
+    })) {
+      if (!regions.includes('East')) regions.push('East');
+    }
+    if (northKeywords.some((kw) => {
+      const regex = new RegExp(`\\b${kw}\\b`, 'i');
+      return regex.test(p) && !p.includes('north-east') && !p.includes('northeast');
+    })) {
+      if (!regions.includes('North')) regions.push('North');
+    }
+    if (centralKeywords.some((kw) => {
+      const regex = new RegExp(`\\b${kw}\\b`, 'i');
+      return regex.test(p);
+    })) {
+      if (!regions.includes('Central')) regions.push('Central');
+    }
+
+    return regions;
+  }
+
   private normalizeIntent(intent: SearchIntent, rawPrompt: string): SearchIntent {
     // Ensure all critical fields are populated
     if (!intent.housing) {
       intent.housing = { mode: 'buy', type: 'condo', maxBudget: 1800000, bedrooms: 3 };
     }
+    if (!intent.preferences) {
+      intent.preferences = {
+        affordability: 25,
+        commute: 20,
+        transport: 20,
+        education: 15,
+        familyAmenities: 10,
+        lifestyle: 5,
+        healthcare: 5,
+        marketFundamentals: 5
+      };
+    }
+    if (!intent.hardConstraints) {
+      intent.hardConstraints = [];
+    }
+
+    const detectedRegions = this.extractRegionFromPrompt(rawPrompt);
+    if (detectedRegions.length > 0) {
+      intent.preferences.preferredRegions = detectedRegions;
+      for (const reg of detectedRegions) {
+        if (!intent.hardConstraints.some((c) => c.field === 'region' && c.value === reg)) {
+          intent.hardConstraints.push({
+            field: 'region',
+            operator: 'in',
+            value: reg,
+            description: `Must be located in the ${reg} region of Singapore`
+          });
+        }
+      }
+    }
+
     if (!intent.workplaces || intent.workplaces.length === 0) {
       if (/mbfc|marina bay/i.test(rawPrompt)) {
         intent.workplaces.push({ query: 'MBFC', maxCommuteMinutes: 45, weight: 1 });
       }
       if (/changi/i.test(rawPrompt)) {
         intent.workplaces.push({ query: 'Changi', maxCommuteMinutes: 45, weight: 1 });
+      }
+      if (/raffles place|tanjong pagar|cbd/i.test(rawPrompt)) {
+        intent.workplaces.push({ query: 'Raffles Place (CBD)', maxCommuteMinutes: 45, weight: 1 });
       }
     }
     return intent;
@@ -270,7 +348,7 @@ Rules:
 
     // Bedrooms
     let bedrooms: number | null = 3;
-    const bedMatch = p.match(/(\d+)\s*(-|\s)?(bedroom|bed|br)/i);
+    const bedMatch = p.match(/(\d+)\s*(-|\s)?(bedroom|bed|br|rm|room)/i);
     if (bedMatch) {
       bedrooms = parseInt(bedMatch[1], 10);
     }
@@ -283,7 +361,7 @@ Rules:
     if (/changi/i.test(p)) {
       workplaces.push({ query: 'Changi', maxCommuteMinutes: 45, weight: 1 });
     }
-    if (/raffles place|cbd/i.test(p)) {
+    if (/raffles place|tanjong pagar|cbd/i.test(p)) {
       workplaces.push({ query: 'Raffles Place', maxCommuteMinutes: 40, weight: 1 });
     }
     if (/one-north|buona vista/i.test(p)) {
@@ -300,6 +378,25 @@ Rules:
     const hasParks = /park|green|nature/i.test(p);
     const hasQuiet = /quiet|peaceful|serene|retiree/i.test(p);
     const hasHealthcare = /health|hospital|clinic|doctor|retiree/i.test(p);
+
+    const detectedRegions = this.extractRegionFromPrompt(prompt);
+    const hardConstraints: SearchIntent['hardConstraints'] = [
+      {
+        field: 'price',
+        operator: 'lte',
+        value: maxBudget,
+        description: `Price within budget (<= $${(maxBudget / 1000000).toFixed(2)}M)`
+      }
+    ];
+
+    for (const reg of detectedRegions) {
+      hardConstraints.push({
+        field: 'region',
+        operator: 'in',
+        value: reg,
+        description: `Must be located in the ${reg} region of Singapore`
+      });
+    }
 
     return {
       housing: {
@@ -340,16 +437,10 @@ Rules:
         familyAmenities: 10,
         lifestyle: hasParks ? 10 : 5,
         healthcare: hasHealthcare ? 10 : 5,
-        marketFundamentals: 5
+        marketFundamentals: 5,
+        preferredRegions: detectedRegions.length > 0 ? detectedRegions : undefined
       },
-      hardConstraints: [
-        {
-          field: 'price',
-          operator: 'lte',
-          value: maxBudget,
-          description: `Price within budget (<= $${(maxBudget / 1000000).toFixed(2)}M)`
-        }
-      ]
+      hardConstraints
     };
   }
 }

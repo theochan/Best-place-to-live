@@ -48,10 +48,11 @@ export interface SearchIntent {
     lifestyle: number;
     healthcare: number;
     marketFundamentals: number;
+    preferredRegions?: Array<'East' | 'West' | 'North' | 'North-East' | 'Central'>;
   };
   hardConstraints: Array<{
     field: string;
-    operator: 'eq' | 'neq' | 'lt' | 'lte' | 'gt' | 'gte' | 'within' | 'exists';
+    operator: 'eq' | 'neq' | 'lt' | 'lte' | 'gt' | 'gte' | 'within' | 'exists' | 'in';
     value: unknown;
     description: string;
   }>;

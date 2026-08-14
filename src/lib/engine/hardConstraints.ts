@@ -17,7 +17,36 @@ export function evaluateHardConstraints(
   intent: SearchIntent,
   resolvedWorkplaces: Array<{ name: string; lat: number; lng: number; maxCommuteMinutes?: number | null }>
 ): ConstraintCheckResult {
-  // 1. Budget Constraint
+  // 1. Region & Geographic Location Constraint (Strict hard check)
+  const regionHardConstraints = intent.hardConstraints?.filter(
+    (c) => c.field === 'region' || c.field === 'location'
+  ) || [];
+  const preferredRegions = intent.preferences?.preferredRegions || [];
+
+  if (regionHardConstraints.length > 0) {
+    const requiredRegions = regionHardConstraints.map((c) => String(c.value).toLowerCase());
+    const isMatch = requiredRegions.some(
+      (r) => area.region.toLowerCase().includes(r) || r.includes(area.region.toLowerCase())
+    );
+    if (!isMatch) {
+      return {
+        passed: false,
+        failedReason: `Not located in requested region (${area.region} instead of ${regionHardConstraints.map((c) => c.value).join(', ')})`
+      };
+    }
+  } else if (preferredRegions.length > 0) {
+    const isMatch = preferredRegions.some(
+      (r) => area.region.toLowerCase().includes(r.toLowerCase()) || r.toLowerCase().includes(area.region.toLowerCase())
+    );
+    if (!isMatch) {
+      return {
+        passed: false,
+        failedReason: `Not located in requested region (${area.region} instead of ${preferredRegions.join(', ')})`
+      };
+    }
+  }
+
+  // 2. Budget Constraint
   const maxBudget = intent.housing.maxBudget;
   if (maxBudget) {
     const isRent = intent.housing.mode === 'rent';
@@ -43,7 +72,7 @@ export function evaluateHardConstraints(
     }
   }
 
-  // 2. Maximum Commute Time Constraint
+  // 3. Maximum Commute Time Constraint
   if (resolvedWorkplaces.length > 0) {
     for (const wp of resolvedWorkplaces) {
       const commuteMinutes = estimateSingaporeCommuteMinutes(
@@ -62,7 +91,7 @@ export function evaluateHardConstraints(
     }
   }
 
-  // 3. MRT Proximity Constraint
+  // 4. MRT Proximity Constraint
   if (intent.transport.maxMrtDistanceMeters) {
     const nearestMrtDist = Math.min(
       ...area.mrtStations.map((mrt) =>
@@ -77,7 +106,7 @@ export function evaluateHardConstraints(
     }
   }
 
-  // 4. Primary School Radius Constraint
+  // 5. Primary School Radius Constraint
   if (intent.education.primarySchoolWithinMeters && intent.education.importance >= 4) {
     const nearestSchoolDist = Math.min(
       ...area.primarySchools.map((sch) =>

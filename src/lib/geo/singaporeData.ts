@@ -433,6 +433,364 @@ export const SINGAPORE_PLANNING_AREAS: SingaporePlanningArea[] = [
     amenities: [
       { name: 'Bukit Timah Plaza & Beauty World', type: 'mall', lat: 1.3392, lng: 103.7768 }
     ]
+  },
+  {
+    id: 'clementi',
+    name: 'Clementi',
+    region: 'West',
+    centroid: { lat: 1.3162, lng: 103.7649 },
+    boundaryPolygon: [
+      [1.335, 103.750], [1.332, 103.780], [1.295, 103.775], [1.300, 103.748], [1.335, 103.750]
+    ],
+    subzones: ['Clementi Central', 'Clementi North', 'Clementi West', 'Sunset Way', 'Panda'],
+    officialCode: 'CL',
+    baselineCondoMedianPrice: 1750000,
+    baselineHdbMedianPrice: 680000,
+    baselineAvgPsf: 1680,
+    baselineRental3BR: 4600,
+    supplyPipeline: 'Low',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Clementi', code: 'EW23 / CR17', lat: 1.3152, lng: 103.7652, lines: ['East-West', 'Cross Island'] },
+      { name: 'Dover', code: 'EW22', lat: 1.3114, lng: 103.7786, lines: ['East-West'] }
+    ],
+    primarySchools: [
+      { name: 'Nan Hua Primary School', lat: 1.3208, lng: 103.7678, popular: true },
+      { name: 'Pei Tong Primary School', lat: 1.3168, lng: 103.7695, popular: false },
+      { name: 'Clementi Primary School', lat: 1.3155, lng: 103.7608, popular: false },
+      { name: 'Qifa Primary School', lat: 1.3132, lng: 103.7585, popular: false }
+    ],
+    parks: [
+      { name: 'Clementi Woods Park', lat: 1.3025, lng: 103.7682, size: 'regional' },
+      { name: 'West Coast Park (Nearby)', lat: 1.2965, lng: 103.7645, size: 'regional' },
+      { name: 'Sunset Way Park', lat: 1.3255, lng: 103.7725, size: 'neighborhood' }
+    ],
+    healthcare: [
+      { name: 'Clementi Polyclinic (NUP)', type: 'polyclinic', lat: 1.3148, lng: 103.7641 },
+      { name: 'National University Hospital (Adjacent)', type: 'hospital', lat: 1.2935, lng: 103.7832 }
+    ],
+    amenities: [
+      { name: 'The Clementi Mall & 321 Clementi', type: 'mall', lat: 1.3151, lng: 103.7651 },
+      { name: 'Clementi Sports & Swimming Complex', type: 'sports', lat: 1.3105, lng: 103.7648 }
+    ]
+  },
+  {
+    id: 'jurong-west',
+    name: 'Jurong West',
+    region: 'West',
+    centroid: { lat: 1.3404, lng: 103.7090 },
+    boundaryPolygon: [
+      [1.360, 103.685], [1.358, 103.725], [1.325, 103.720], [1.328, 103.680], [1.360, 103.685]
+    ],
+    subzones: ['Boon Lay', 'Pioneer', 'Taman Jurong', 'Hong Kah', 'Gek Poh'],
+    officialCode: 'JW',
+    baselineCondoMedianPrice: 1450000,
+    baselineHdbMedianPrice: 510000,
+    baselineAvgPsf: 1350,
+    baselineRental3BR: 3900,
+    supplyPipeline: 'High',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Boon Lay', code: 'EW27 / JS8', lat: 1.3385, lng: 103.7061, lines: ['East-West', 'Jurong Region'] },
+      { name: 'Pioneer', code: 'EW28', lat: 1.3376, lng: 103.6973, lines: ['East-West'] },
+      { name: 'Lakeside', code: 'EW26', lat: 1.3442, lng: 103.7210, lines: ['East-West'] }
+    ],
+    primarySchools: [
+      { name: 'Rulang Primary School', lat: 1.3468, lng: 103.7185, popular: true },
+      { name: 'Jurong West Primary School', lat: 1.3412, lng: 103.7028, popular: false },
+      { name: 'Frontier Primary School', lat: 1.3365, lng: 103.7042, popular: false },
+      { name: 'West Grove Primary School', lat: 1.3435, lng: 103.7005, popular: false }
+    ],
+    parks: [
+      { name: 'Jurong Lake Gardens (West Side)', lat: 1.3382, lng: 103.7255, size: 'regional' },
+      { name: 'Jurong Central Park', lat: 1.3392, lng: 103.7095, size: 'regional' }
+    ],
+    healthcare: [
+      { name: 'Pioneer Polyclinic', type: 'polyclinic', lat: 1.3388, lng: 103.6995 },
+      { name: 'Jurong Polyclinic', type: 'polyclinic', lat: 1.3489, lng: 103.7395 }
+    ],
+    amenities: [
+      { name: 'Jurong Point Mega Mall', type: 'mall', lat: 1.3402, lng: 103.7065 },
+      { name: 'Gek Poh Shopping Centre & Pioneer Mall', type: 'mall', lat: 1.3492, lng: 103.6982 }
+    ]
+  },
+  {
+    id: 'bukit-batok',
+    name: 'Bukit Batok',
+    region: 'West',
+    centroid: { lat: 1.3590, lng: 103.7518 },
+    boundaryPolygon: [
+      [1.375, 103.735], [1.372, 103.768], [1.340, 103.765], [1.342, 103.730], [1.375, 103.735]
+    ],
+    subzones: ['Bukit Batok Central', 'Bukit Batok East', 'Bukit Batok West', 'Guilin', 'Brickworks'],
+    officialCode: 'BB',
+    baselineCondoMedianPrice: 1520000,
+    baselineHdbMedianPrice: 530000,
+    baselineAvgPsf: 1420,
+    baselineRental3BR: 4000,
+    supplyPipeline: 'Moderate',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Bukit Batok', code: 'NS2', lat: 1.3490, lng: 103.7496, lines: ['North-South'] },
+      { name: 'Bukit Gombak', code: 'NS3', lat: 1.3587, lng: 103.7518, lines: ['North-South'] }
+    ],
+    primarySchools: [
+      { name: 'Princess Elizabeth Primary School', lat: 1.3502, lng: 103.7432, popular: true },
+      { name: 'Bukit View Primary School', lat: 1.3458, lng: 103.7578, popular: false },
+      { name: 'Dazhong Primary School', lat: 1.3615, lng: 103.7482, popular: false },
+      { name: 'Lianhua Primary School', lat: 1.3562, lng: 103.7551, popular: false }
+    ],
+    parks: [
+      { name: 'Bukit Batok Nature Park', lat: 1.3515, lng: 103.7635, size: 'regional' },
+      { name: 'Little Guilin (Bukit Batok Town Park)', lat: 1.3575, lng: 103.7552, size: 'regional' }
+    ],
+    healthcare: [
+      { name: 'Bukit Batok Polyclinic', type: 'polyclinic', lat: 1.3508, lng: 103.7492 }
+    ],
+    amenities: [
+      { name: 'West Mall Shopping Centre', type: 'mall', lat: 1.3501, lng: 103.7498 },
+      { name: 'Le Quest Mall', type: 'mall', lat: 1.3585, lng: 103.7412 }
+    ]
+  },
+  {
+    id: 'bukit-panjang',
+    name: 'Bukit Panjang',
+    region: 'West',
+    centroid: { lat: 1.3780, lng: 103.7695 },
+    boundaryPolygon: [
+      [1.395, 103.755], [1.392, 103.785], [1.360, 103.780], [1.362, 103.750], [1.395, 103.755]
+    ],
+    subzones: ['Bukit Panjang Ring', 'Fajar', 'Senja', 'Segar', 'Dairy Farm'],
+    officialCode: 'BP',
+    baselineCondoMedianPrice: 1480000,
+    baselineHdbMedianPrice: 520000,
+    baselineAvgPsf: 1390,
+    baselineRental3BR: 3950,
+    supplyPipeline: 'Moderate',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Bukit Panjang', code: 'DT1 / BP6', lat: 1.3780, lng: 103.7615, lines: ['Downtown', 'Bukit Panjang LRT'] },
+      { name: 'Cashew', code: 'DT2', lat: 1.3695, lng: 103.7645, lines: ['Downtown'] },
+      { name: 'Hillview', code: 'DT3', lat: 1.3625, lng: 103.7675, lines: ['Downtown'] }
+    ],
+    primarySchools: [
+      { name: 'Bukit Panjang Primary School', lat: 1.3735, lng: 103.7692, popular: true },
+      { name: 'CHIS Our Lady Queen of Peace', lat: 1.3668, lng: 103.7682, popular: true },
+      { name: 'Beacon Primary School', lat: 1.3835, lng: 103.7712, popular: false },
+      { name: 'Zhenghua Primary School', lat: 1.3792, lng: 103.7675, popular: false }
+    ],
+    parks: [
+      { name: 'Chestnut Nature Park', lat: 1.3745, lng: 103.7785, size: 'regional' },
+      { name: 'Dairy Farm Nature Park', lat: 1.3645, lng: 103.7765, size: 'regional' },
+      { name: 'Pang Sua Pond & Park', lat: 1.3812, lng: 103.7635, size: 'neighborhood' }
+    ],
+    healthcare: [
+      { name: 'Bukit Panjang Polyclinic (Senja)', type: 'polyclinic', lat: 1.3842, lng: 103.7628 }
+    ],
+    amenities: [
+      { name: 'Hillion Mall & Bukit Panjang Plaza', type: 'mall', lat: 1.3782, lng: 103.7625 },
+      { name: 'Junction 10', type: 'mall', lat: 1.3802, lng: 103.7595 }
+    ]
+  },
+  {
+    id: 'choa-chu-kang',
+    name: 'Choa Chu Kang',
+    region: 'West',
+    centroid: { lat: 1.3840, lng: 103.7470 },
+    boundaryPolygon: [
+      [1.405, 103.730], [1.400, 103.760], [1.370, 103.755], [1.372, 103.725], [1.405, 103.730]
+    ],
+    subzones: ['Choa Chu Kang Central', 'Yew Tee', 'Teck Whye', 'Keat Hong', 'Peng Siang'],
+    officialCode: 'CK',
+    baselineCondoMedianPrice: 1420000,
+    baselineHdbMedianPrice: 505000,
+    baselineAvgPsf: 1320,
+    baselineRental3BR: 3850,
+    supplyPipeline: 'Moderate',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Choa Chu Kang', code: 'NS4 / JS1 / BP1', lat: 1.3853, lng: 103.7443, lines: ['North-South', 'Jurong Region', 'Bukit Panjang LRT'] },
+      { name: 'Yew Tee', code: 'NS5', lat: 1.3972, lng: 103.7475, lines: ['North-South'] }
+    ],
+    primarySchools: [
+      { name: 'South View Primary School', lat: 1.3815, lng: 103.7468, popular: true },
+      { name: 'Choa Chu Kang Primary School', lat: 1.3828, lng: 103.7412, popular: false },
+      { name: 'De La Salle School', lat: 1.3965, lng: 103.7492, popular: true },
+      { name: 'Kranji Primary School', lat: 1.3992, lng: 103.7445, popular: false }
+    ],
+    parks: [
+      { name: 'Choa Chu Kang Park', lat: 1.3878, lng: 103.7472, size: 'regional' },
+      { name: 'Keat Hong Park', lat: 1.3782, lng: 103.7485, size: 'neighborhood' }
+    ],
+    healthcare: [
+      { name: 'Choa Chu Kang Polyclinic (CCK Central)', type: 'polyclinic', lat: 1.3855, lng: 103.7462 }
+    ],
+    amenities: [
+      { name: 'Lot One Shoppers Mall', type: 'mall', lat: 1.3851, lng: 103.7448 },
+      { name: 'Yew Tee Point & Yew Tee Square', type: 'mall', lat: 1.3970, lng: 103.7472 }
+    ]
+  },
+  {
+    id: 'woodlands',
+    name: 'Woodlands',
+    region: 'North',
+    centroid: { lat: 1.4382, lng: 103.7890 },
+    boundaryPolygon: [
+      [1.455, 103.765], [1.450, 103.810], [1.415, 103.805], [1.418, 103.760], [1.455, 103.765]
+    ],
+    subzones: ['Woodlands Regional Centre', 'Woodlands East', 'Woodlands South', 'Admiralty', 'Innova'],
+    officialCode: 'WD',
+    baselineCondoMedianPrice: 1390000,
+    baselineHdbMedianPrice: 495000,
+    baselineAvgPsf: 1290,
+    baselineRental3BR: 3800,
+    supplyPipeline: 'High',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Woodlands', code: 'NS9 / TE2', lat: 1.4368, lng: 103.7865, lines: ['North-South', 'Thomson-East Coast'] },
+      { name: 'Woodlands North', code: 'TE1 / RTS', lat: 1.4485, lng: 103.7852, lines: ['Thomson-East Coast'] },
+      { name: 'Woodlands South', code: 'TE3', lat: 1.4275, lng: 103.7932, lines: ['Thomson-East Coast'] },
+      { name: 'Admiralty', code: 'NS10', lat: 1.4405, lng: 103.8009, lines: ['North-South'] }
+    ],
+    primarySchools: [
+      { name: 'Innova Primary School', lat: 1.4305, lng: 103.7895, popular: false },
+      { name: 'Si Ling Primary School', lat: 1.4325, lng: 103.7812, popular: false },
+      { name: 'Woodlands Primary School', lat: 1.4365, lng: 103.7925, popular: false },
+      { name: 'Greenwood Primary School', lat: 1.4402, lng: 103.8045, popular: false }
+    ],
+    parks: [
+      { name: 'Admiralty Park & Mangrove', lat: 1.4465, lng: 103.7825, size: 'regional' },
+      { name: 'Woodlands Waterfront Park', lat: 1.4542, lng: 103.7815, size: 'regional' }
+    ],
+    healthcare: [
+      { name: 'Woodlands Health Campus (Hospital)', type: 'hospital', lat: 1.4265, lng: 103.7945 },
+      { name: 'Woodlands Polyclinic', type: 'polyclinic', lat: 1.4345, lng: 103.7885 }
+    ],
+    amenities: [
+      { name: 'Causeway Point Regional Mall', type: 'mall', lat: 1.4358, lng: 103.7858 },
+      { name: 'Woods Square Commercial Hub', type: 'mall', lat: 1.4372, lng: 103.7875 }
+    ]
+  },
+  {
+    id: 'yishun',
+    name: 'Yishun',
+    region: 'North',
+    centroid: { lat: 1.4304, lng: 103.8354 },
+    boundaryPolygon: [
+      [1.448, 103.820], [1.445, 103.855], [1.410, 103.850], [1.412, 103.815], [1.448, 103.820]
+    ],
+    subzones: ['Yishun Central', 'Yishun East', 'Yishun South', 'Khatib', 'Lower Seletar'],
+    officialCode: 'YS',
+    baselineCondoMedianPrice: 1410000,
+    baselineHdbMedianPrice: 485000,
+    baselineAvgPsf: 1310,
+    baselineRental3BR: 3800,
+    supplyPipeline: 'Moderate',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Yishun', code: 'NS13', lat: 1.4295, lng: 103.8352, lines: ['North-South'] },
+      { name: 'Khatib', code: 'NS14', lat: 1.4172, lng: 103.8329, lines: ['North-South'] },
+      { name: 'Springleaf', code: 'TE4', lat: 1.3982, lng: 103.8178, lines: ['Thomson-East Coast'] }
+    ],
+    primarySchools: [
+      { name: 'Chongfu School', lat: 1.4385, lng: 103.8388, popular: true },
+      { name: 'Northland Primary School', lat: 1.4215, lng: 103.8415, popular: true },
+      { name: 'Ahmad Ibrahim Primary School', lat: 1.4335, lng: 103.8325, popular: false },
+      { name: 'Jiemin Primary School', lat: 1.4312, lng: 103.8295, popular: false }
+    ],
+    parks: [
+      { name: 'Lower Seletar Reservoir Park', lat: 1.4125, lng: 103.8355, size: 'regional' },
+      { name: 'Yishun Pond Park', lat: 1.4275, lng: 103.8385, size: 'neighborhood' }
+    ],
+    healthcare: [
+      { name: 'Khoo Teck Puat Hospital (KTPH)', type: 'hospital', lat: 1.4245, lng: 103.8382 },
+      { name: 'Yishun Community Hospital', type: 'hospital', lat: 1.4238, lng: 103.8391 },
+      { name: 'Yishun Polyclinic', type: 'polyclinic', lat: 1.4312, lng: 103.8378 }
+    ],
+    amenities: [
+      { name: 'Northpoint City (Mega Mall)', type: 'mall', lat: 1.4292, lng: 103.8358 },
+      { name: 'Wisteria Mall & Junction 9', type: 'mall', lat: 1.4225, lng: 103.8435 }
+    ]
+  },
+  {
+    id: 'ang-mo-kio',
+    name: 'Ang Mo Kio',
+    region: 'North-East',
+    centroid: { lat: 1.3691, lng: 103.8454 },
+    boundaryPolygon: [
+      [1.385, 103.830], [1.382, 103.865], [1.355, 103.860], [1.358, 103.825], [1.385, 103.830]
+    ],
+    subzones: ['Ang Mo Kio Town Centre', 'Cheng San', 'Chong Boon', 'Kebun Baru', 'Yio Chu Kang'],
+    officialCode: 'AM',
+    baselineCondoMedianPrice: 1720000,
+    baselineHdbMedianPrice: 580000,
+    baselineAvgPsf: 1540,
+    baselineRental3BR: 4300,
+    supplyPipeline: 'Moderate',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Ang Mo Kio', code: 'NS16 / CR11', lat: 1.3699, lng: 103.8496, lines: ['North-South', 'Cross Island'] },
+      { name: 'Yio Chu Kang', code: 'NS15', lat: 1.3818, lng: 103.8449, lines: ['North-South'] },
+      { name: 'Mayflower', code: 'TE6', lat: 1.3715, lng: 103.8365, lines: ['Thomson-East Coast'] },
+      { name: 'Lentor', code: 'TE5', lat: 1.3855, lng: 103.8358, lines: ['Thomson-East Coast'] }
+    ],
+    primarySchools: [
+      { name: 'CHIJ St. Nicholas Girls Primary', lat: 1.3742, lng: 103.8345, popular: true },
+      { name: 'Ai Tong School (Nearby)', lat: 1.3605, lng: 103.8342, popular: true },
+      { name: 'Mayflower Primary School', lat: 1.3672, lng: 103.8415, popular: false },
+      { name: 'Jing Shan Primary School', lat: 1.3668, lng: 103.8545, popular: false }
+    ],
+    parks: [
+      { name: 'Bishan-Ang Mo Kio Park (North Side)', lat: 1.3645, lng: 103.8455, size: 'regional' },
+      { name: 'Ang Mo Kio Town Garden West', lat: 1.3725, lng: 103.8445, size: 'regional' }
+    ],
+    healthcare: [
+      { name: 'Ang Mo Kio Polyclinic (NHGP)', type: 'polyclinic', lat: 1.3692, lng: 103.8475 }
+    ],
+    amenities: [
+      { name: 'AMK Hub Shopping Mall', type: 'mall', lat: 1.3695, lng: 103.8488 },
+      { name: 'Broadway Plaza & Jubilee Square', type: 'mall', lat: 1.3712, lng: 103.8475 }
+    ]
+  },
+  {
+    id: 'toa-payoh',
+    name: 'Toa Payoh',
+    region: 'Central',
+    centroid: { lat: 1.3343, lng: 103.8524 },
+    boundaryPolygon: [
+      [1.350, 103.840], [1.348, 103.870], [1.320, 103.865], [1.322, 103.835], [1.350, 103.840]
+    ],
+    subzones: ['Toa Payoh Central', 'Toa Payoh East', 'Toa Payoh West', 'Potong Pasir', 'Boon Teck'],
+    officialCode: 'TP',
+    baselineCondoMedianPrice: 2100000,
+    baselineHdbMedianPrice: 650000,
+    baselineAvgPsf: 1850,
+    baselineRental3BR: 4900,
+    supplyPipeline: 'Low',
+    quietnessRating: 4,
+    mrtStations: [
+      { name: 'Toa Payoh', code: 'NS19', lat: 1.3328, lng: 103.8478, lines: ['North-South'] },
+      { name: 'Braddell', code: 'NS18', lat: 1.3405, lng: 103.8468, lines: ['North-South'] },
+      { name: 'Caldecott', code: 'CC17 / TE9', lat: 1.3375, lng: 103.8398, lines: ['Circle', 'Thomson-East Coast'] },
+      { name: 'Potong Pasir', code: 'NE10', lat: 1.3312, lng: 103.8692, lines: ['North-East'] }
+    ],
+    primarySchools: [
+      { name: 'CHIJ Primary (Toa Payoh)', lat: 1.3325, lng: 103.8425, popular: true },
+      { name: 'Pei Chun Public School', lat: 1.3375, lng: 103.8552, popular: true },
+      { name: 'Kheng Cheng School', lat: 1.3365, lng: 103.8488, popular: false },
+      { name: 'First Toa Payoh Primary School', lat: 1.3392, lng: 103.8595, popular: false }
+    ],
+    parks: [
+      { name: 'Toa Payoh Town Park', lat: 1.3315, lng: 103.8465, size: 'regional' },
+      { name: 'Toa Payoh Sensory Park', lat: 1.3355, lng: 103.8512, size: 'neighborhood' }
+    ],
+    healthcare: [
+      { name: 'Toa Payoh Polyclinic (NHGP)', type: 'polyclinic', lat: 1.3345, lng: 103.8505 }
+    ],
+    amenities: [
+      { name: 'HDB Hub & Toa Payoh Mall', type: 'mall', lat: 1.3332, lng: 103.8482 },
+      { name: 'Toa Payoh Swimming Complex & Stadium', type: 'sports', lat: 1.3305, lng: 103.8522 }
+    ]
   }
 ];
 
