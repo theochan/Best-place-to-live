@@ -233,9 +233,6 @@ export async function orchestrateSearch(query: string): Promise<SearchResponse> 
   if (!ltaProvider.isConfigured()) {
     missingDataWarnings.push('LTA DataMall live bus frequency feed is using static master infrastructure registry.');
   }
-  if (!uraProvider.isConfigured()) {
-    missingDataWarnings.push('URA private transaction feed uses official quarterly planning area benchmark tables.');
-  }
 
   return {
     success: true,
