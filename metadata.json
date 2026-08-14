@@ -1,0 +1,6 @@
+{
+  "name": "WhereSG AI",
+  "description": "AI-powered Singapore home-location intelligence that ranks neighbourhoods using official Singapore data and Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

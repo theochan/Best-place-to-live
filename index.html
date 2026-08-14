@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhereSG AI - Singapore Home Location Intelligence</title>
+    <meta name="description" content="Singapore home location intelligence engine built with official URA, LTA, SingStat, and data.gov.sg datasets." />
+    <meta property="og:title" content="WhereSG AI - Singapore Home Location Intelligence" />
+    <meta property="og:description" content="Find your ideal Singapore neighbourhood with zero-hallucination data-driven scoring." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="text/javascript">
+      // Suppress cross-origin frame access errors from third-party analytics/widgets
+      window.addEventListener('error', function(event) {
+        if (event && (
+          (event.message && (
+            event.message.indexOf('cross-origin') !== -1 ||
+            event.message.indexOf('Permission denied') !== -1 ||
+            event.message.indexOf('SecurityError') !== -1
+          )) ||
+          (event.error && event.error.name === 'SecurityError')
+        )) {
+          if (event.preventDefault) event.preventDefault();
+          if (event.stopPropagation) event.stopPropagation();
+          return true;
+        }
+      }, true);
+
+      (function(c,l,a,r,i,t,y){
+          try {
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          } catch (e) {
+              console.warn('Clarity init suppressed in cross-origin sandbox', e);
+          }
+      })(window, document, "clarity", "script", "y2566ixa67");
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

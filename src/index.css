@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: light;
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+
+  body {
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+}
+
+#disqus_thread {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+}
